@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- Tipo de pan -->
+  <div>
+    Tipo de pan
+    <ul>
+      <li>Levadura</li>
+      <li>Masa madre</li>
+    </ul>
+  </div>
+  <!-- Tipo de harina -->
+  <div>
+    Tipo de harina
+    <ul>
+      <li>100% integral</li>
+      <li>100% blanca</li>
+      <li>Mix de harinas</li>
+    </ul>
+  </div>
+  <!-- Extras -->
+  <div>
+    Extras
+    <ul>
+      <li>Ajo</li>
+      <li>Queso</li>
+      <li>Cebolla</li>
+      <li>Aceituna</li>
+      <li>Betarraga</li>
+      <li>Chia/Linaza</li>
+    </ul>
+  </div>
+
+  <button class="hola todo" id="boton-de-pan">Cual es mi pan</button>
+  <div id="tipo-de-pan"></div>
+
+</body>
+
+<script>
+  // html es el texto que entiende el nevagador
+  // js es la logica que genera html o animaciones
+  // css se encarga de los estilos
+  const tipoDePan = ["levadura", "masa madre"];
+  const tipoDeHarina = ["100% integral", "100% blanca", "mix de harinas"];
+  const extras = ["ajo", "queso", "cebolla", "aceituna", "betarraga", "chia/linaza"]
+
+  const getRandomArbitrary = (min, max) => {
+    return Math.round(Math.random() * (max - min) + min);
+  }
+
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1));
+        let temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
+  }
+
+  const getExtras = (opciones) => {
+    const extrasRandom = shuffleArray(opciones);
+    const primerExtra = extrasRandom[getRandomArbitrary(0, extras.length - 1)];
+    let segundoExtra = extrasRandom[getRandomArbitrary(0, extras.length - 1)];
+
+    if (primerExtra === segundoExtra) {
+      console.log({primerExtra, segundoExtra});
+      segundoExtra = extrasRandom[getRandomArbitrary(0, extras.length - 1)];
+    }
+
+    return `${primerExtra} y ${segundoExtra}`
+  }
+
+  const boton = document.getElementById('boton-de-pan');
+  const cajita = document.getElementById('tipo-de-pan');
+
+  boton.onclick = () => {
+    const tiposDeHarinaRandom = shuffleArray(tipoDeHarina);
+
+    const tipoPan = tipoDePan[getRandomArbitrary(0,1)];
+    const tipoHarina = tiposDeHarinaRandom[getRandomArbitrary(0,2)];
+
+    const extra = getExtras(extras);
+
+    cajita.innerText = `El tipo de harina es: ${tipoHarina}, el tipo de pan: ${tipoPan} y los extras son: ${extra}.`
+  };
+</script>
+
+</html>
