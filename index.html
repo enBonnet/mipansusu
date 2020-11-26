@@ -5,42 +5,56 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mipansusu</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+
+  <link rel="stylesheet" href="normalize.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-  <!-- Tipo de pan -->
-  <div class="tipo-de-pan">
-    Tipo de pan
-    <ul>
-      <li>Levadura</li>
-      <li>Masa madre</li>
-    </ul>
-  </div>
-  <!-- Tipo de harina -->
-  <div class="tipo-de-harina">
-    Tipo de harina
-    <ul>
-      <li>100% integral</li>
-      <li>100% blanca</li>
-      <li>Mix de harinas</li>
-    </ul>
-  </div>
-  <!-- Extras -->
-  <div class="extras">
-    Extras
-    <ul>
-      <li>Frutos secos</li>
-      <li>Queso</li>
-      <li>Cebolla</li>
-      <li>Aceituna</li>
-      <li>Betarraga</li>
-      <li>Chia/Linaza</li>
-    </ul>
-  </div>
+  <div class="caja-de-pan">
+    <div class="logo">
+      <span rol="icon">
+        &#127838;
+      </span>
+      <span>Mipansusu</span>
+    </div>
+    <!-- Tipo de pan -->
+    <div class="tipo-de-pan">
+      <span class="section-title">Tipo de pan</span>
+      <ul class="lists">
+        <li class="item-list">Levadura</li>
+        <li class="item-list">Masa madre</li>
+      </ul>
+    </div>
+    <!-- Tipo de harina -->
+    <div class="tipo-de-harina">
+      <span class="section-title">Tipo de harina</span>
+      <ul class="lists">
+        <li class="item-list">100% integral</li>
+        <li class="item-list">100% blanca</li>
+        <li class="item-list">Mix de harinas</li>
+      </ul>
+    </div>
+    <!-- Extras -->
+    <div class="extras">
+      <span class="section-title">Extras</span>
+      <ul class="lists">
+        <li class="item-list">Frutos secos</li>
+        <li class="item-list">Queso</li>
+        <li class="item-list">Cebolla</li>
+        <li class="item-list">Aceituna</li>
+        <li class="item-list">Betarraga</li>
+        <li class="item-list">Chia/Linaza</li>
+      </ul>
+    </div>
 
-  <button class="hola todo" id="boton-de-pan">Cual es mi pan</button>
+    <button class="btn-pan" id="boton-de-pan">Cual es mi pan</button>
+  </div>
   <div id="tipo-de-pan"></div>
-
 </body>
 
 <script>
@@ -57,10 +71,10 @@
 
   const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
-        let j = Math.floor(Math.random() * (i + 1));
-        let temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
+      let j = Math.floor(Math.random() * (i + 1));
+      let temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
     }
     return array;
   }
@@ -71,7 +85,7 @@
     let segundoExtra = extrasRandom[getRandomArbitrary(0, extras.length - 1)];
 
     if (primerExtra === segundoExtra) {
-      console.log({primerExtra, segundoExtra});
+      console.log({ primerExtra, segundoExtra });
       segundoExtra = extrasRandom[getRandomArbitrary(0, extras.length - 1)];
     }
 
@@ -84,8 +98,8 @@
   boton.onclick = () => {
     const tiposDeHarinaRandom = shuffleArray(tipoDeHarina);
 
-    const tipoPan = tipoDePan[getRandomArbitrary(0,1)];
-    const tipoHarina = tiposDeHarinaRandom[getRandomArbitrary(0,2)];
+    const tipoPan = tipoDePan[getRandomArbitrary(0, 1)];
+    const tipoHarina = tiposDeHarinaRandom[getRandomArbitrary(0, 2)];
 
     const extra = getExtras(extras);
 

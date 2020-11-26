@@ -1,0 +1,52 @@
+body {
+  margin-top: 64px;
+  font-family: 'Raleway', sans-serif;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+.caja-de-pan {
+  display: flex;
+  flex-direction: column;
+}
+
+.caja-de-pan .logo {
+  margin-bottom: 16px;
+  font-size: 32px;
+  font-weight: 600;
+  color: rgb(26, 113, 36);
+}
+
+.section-title {
+  font-size: 24px;
+  color: #146a44;
+}
+
+.caja-de-pan .lists {
+  padding: 0;
+}
+
+.caja-de-pan .item-list {
+  margin-bottom: 8px;
+  list-style-type: none;
+}
+
+.caja-de-pan .btn-pan {
+  border: 1px solid #617073;
+  background-color: #7A93AC;
+  color: #fff;
+  font-weight: 600;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
