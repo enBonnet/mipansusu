@@ -1,17 +1,17 @@
 body {
-  margin-top: 64px;
-  font-family: 'Raleway', sans-serif;
+  align-items: center;
   background-color: #fff;
   display: flex;
   flex-direction: column;
+  font-family: "Raleway", sans-serif;
   justify-content: center;
-  align-items: center;
+  margin-top: 64px;
 }
 
 button {
-  outline: none;
-  border: none;
   background-color: transparent;
+  border: none;
+  outline: none;
   padding: 0;
 }
 
@@ -21,15 +21,15 @@ button {
 }
 
 .caja-de-pan .logo {
-  margin-bottom: 16px;
+  color: rgb(26, 113, 36);
   font-size: 32px;
   font-weight: 600;
-  color: rgb(26, 113, 36);
+  margin-bottom: 16px;
 }
 
 .section-title {
-  font-size: 24px;
   color: #146a44;
+  font-size: 24px;
 }
 
 .caja-de-pan .lists {
@@ -37,16 +37,30 @@ button {
 }
 
 .caja-de-pan .item-list {
-  margin-bottom: 8px;
   list-style-type: none;
+  margin-bottom: 8px;
 }
 
 .caja-de-pan .btn-pan {
+  background-color: #7a93ac;
+  border-radius: 4px;
   border: 1px solid #617073;
-  background-color: #7A93AC;
   color: #fff;
+  cursor: pointer;
   font-weight: 600;
   padding: 8px;
-  border-radius: 4px;
-  cursor: pointer;
+}
+
+.dialog {
+  border-radius: 8px;
+  border: 2px solid #095826;
+  max-width: 300px;
+  text-align: left;
+  top: 250px;
+}
+
+dialog::backdrop {
+  background: #146a44;
+  mix-blend-mode: darken;
+  opacity: 0.1;
 }

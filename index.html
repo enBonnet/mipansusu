@@ -15,6 +15,9 @@
 </head>
 
 <body>
+  <div id="modal">
+    <dialog class="dialog" id="dialog"></dialog>
+  </div>
   <div class="caja-de-pan">
     <div class="logo">
       <span rol="icon">
@@ -54,10 +57,22 @@
 
     <button class="btn-pan" id="boton-de-pan">Cual es mi pan</button>
   </div>
-  <div id="tipo-de-pan"></div>
 </body>
 
 <script>
+  function debounce(func, wait, immediate) {
+    let timeout;
+    return function () {
+      var context = this, args = arguments;
+      clearTimeout(timeout);
+      timeout = setTimeout(function () {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      }, wait);
+      if (immediate && !timeout) func.apply(context, args);
+    };
+  }
+
   // html es el texto que entiende el nevagador
   // js es la logica que genera html o animaciones
   // css se encarga de los estilos
@@ -85,7 +100,6 @@
     let segundoExtra = extrasRandom[getRandomArbitrary(0, extras.length - 1)];
 
     if (primerExtra === segundoExtra) {
-      console.log({ primerExtra, segundoExtra });
       segundoExtra = extrasRandom[getRandomArbitrary(0, extras.length - 1)];
     }
 
@@ -93,18 +107,25 @@
   }
 
   const boton = document.getElementById('boton-de-pan');
-  const cajita = document.getElementById('tipo-de-pan');
+  const modal = document.getElementById('modal');
+  const dialog = document.getElementById('dialog');
 
-  boton.onclick = () => {
+  function accionAlHacerClick() {
     const tiposDeHarinaRandom = shuffleArray(tipoDeHarina);
 
     const tipoPan = tipoDePan[getRandomArbitrary(0, 1)];
     const tipoHarina = tiposDeHarinaRandom[getRandomArbitrary(0, 2)];
-
     const extra = getExtras(extras);
 
-    cajita.innerText = `El tipo de harina es: ${tipoHarina}, el tipo de pan: ${tipoPan} y los extras son: ${extra}.`
-  };
+    const content = `<p>El tipo de harina es: ${tipoHarina}, el tipo de pan: ${tipoPan} y los extras son: ${extra}.</p>`
+    dialog.innerHTML = content;
+    dialog.showModal();
+  }
+
+  boton.addEventListener('click', debounce(accionAlHacerClick, 500))
+  dialog.addEventListener('click', function () {
+      dialog.close();
+    });
 </script>
 
 </html>
