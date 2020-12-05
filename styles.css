@@ -64,3 +64,7 @@ dialog::backdrop {
   mix-blend-mode: darken;
   opacity: 0.1;
 }
+
+.modal-title {
+  text-align: center;
+}
