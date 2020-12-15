@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mipansusu</title>
+  <link rel="shortcut icon" href="/assets/favicon-32x32.png" />
+
   <link rel="preconnect" href="https://fonts.gstatic.com">
 
   <link rel="stylesheet" href="normalize.css">
@@ -117,7 +119,12 @@
     const tipoHarina = tiposDeHarinaRandom[getRandomArbitrary(0, 2)];
     const extra = getExtras(extras);
 
-    const content = `<p>El tipo de harina es: ${tipoHarina}, el tipo de pan: ${tipoPan} y los extras son: ${extra}.</p>`
+    const content = `
+      <h3 class="modal-title">¡El pancito &#127838; de hoy es!</h3>
+      <p>🤩${tipoHarina}</p>
+      <p>😋${tipoPan}</p>
+      <p>😍${extra}</p>
+    `
     dialog.innerHTML = content;
     dialog.showModal();
   }
